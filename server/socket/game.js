@@ -243,7 +243,11 @@ class ExplodingPuppies {
         this._currentPlayerHand().splice(randomPlayerIndex, 0, ...card)
 
         return `You got ${card} from player ${parseInt(targetPlayer, 10) + 1}`
+      } else {
+        return 'You did not pick 2 of the same cards'
       }
+    } else {
+      return 'You did not pick 2 of the same cards'
     }
   }
 
@@ -269,12 +273,49 @@ class ExplodingPuppies {
         } else {
           return `Player ${targetPlayer + 1} did not have a ${targetCard}`
         }
+      } else {
+        return 'You did not pick 3 of the same cards'
       }
+    } else {
+      return 'You did not pick 3 of the same cards'
     }
   }
 
-  discardFive() {
+  discardFive(discardCards, targetCard) {
+    if (discardCards.length === 5) {
+      const cardOne = this._currentPlayerHand()[discardCards[0]]
+      const cardTwo = this._currentPlayerHand()[discardCards[1]]
+      const cardThree = this._currentPlayerHand()[discardCards[2]]
+      const cardFour = this._currentPlayerHand()[discardCards[3]]
+      const cardFive = this._currentPlayerHand()[discardCards[4]]
+      const cards = [cardOne, cardTwo, cardThree, cardFour, cardFive]
+      const checkCards = {}
+      cards.forEach(card => {
+        if (!checkCards[card]) checkCards[card] = true
+      })
+      if (Object.keys(checkCards).length === 5) {
+        const targetIndex = this.discardPile.indexOf(targetCard.toUpperCase())
+        if (targetIndex !== -1) {
+          discardCards.sort((a, b) => (a - b))
+          this.discardPile.push(...this._currentPlayerHand().splice(discardCards[4], 1))
+          this.discardPile.push(...this._currentPlayerHand().splice(discardCards[3], 1))
+          this.discardPile.push(...this._currentPlayerHand().splice(discardCards[2], 1))
+          this.discardPile.push(...this._currentPlayerHand().splice(discardCards[1], 1))
+          this.discardPile.push(...this._currentPlayerHand().splice(discardCards[0], 1))
+          const card = this.discardPile.splice(targetIndex, 1)
+          const randomPlayerIndex = Math.floor(Math.random() * this._currentPlayerHand().length)
+          this._currentPlayerHand().splice(randomPlayerIndex, 0, ...card)
 
+          return `You got ${card} from the discard pile`
+        } else {
+          return `There is no ${targetCard.toUpperCase()} in the discard pile`
+        }
+      } else {
+        return 'You did not pick 5 different cards'
+      }
+    } else {
+      return 'You did not pick 5 different cards'
+    }
   }
 }
 

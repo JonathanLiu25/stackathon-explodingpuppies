@@ -87,6 +87,13 @@ const gameHandler = function(io, socket, game) {
     }
   })
 
+  socket.on('game:discardFive', function(discardCards, targetCard) {
+    if (userIndex === currentPlayer()) {
+      socket.emit('game:discardFive', game.discardFive(discardCards, targetCard))
+      io.sockets.emit('game:discardFive')
+    }
+  })
+
   socket.on('game:count', function() {
     socket.emit('game:count', game.countDrawPile())
   })

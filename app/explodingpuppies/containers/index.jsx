@@ -216,7 +216,12 @@ class LocalContainer extends React.Component {
   }
 
   discardFive() {
-    this.toastPopUp(`I don't work yet. :(`, 'Five different cards')
+    const { targetCard } = this.state
+    let { discardCards } = this.state
+    if (targetCard && discardCards.length) {
+      discardCards = discardCards.map(card => parseInt(card.slice(card.length - 2), 10))
+      this.props.socket.emit('game:discardFive', discardCards, targetCard)
+    }
   }
 
   checkMessage(message, title) {
