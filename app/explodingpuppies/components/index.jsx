@@ -79,7 +79,7 @@ const ExplodingPuppiesComponent = props => {
       <div className="player-turn-status">
         {player === currentPlayer
           ? <span><h3>Your turn</h3></span>
-          : <span><h3>Player {currentPlayer + 1}'s turn</h3></span>
+          : <span><h3>Player {currentPlayer + 1}'s turn ({players[currentPlayer]})</h3></span>
         }
       </div>
       <hr />
