@@ -149,7 +149,7 @@ class LocalContainer extends React.Component {
   }
 
   nopeCard() {
-
+    this.toastPopUp(`I don't work yet. :(`, 'Nope card')
   }
 
   futureCard() {
@@ -216,7 +216,7 @@ class LocalContainer extends React.Component {
   }
 
   discardFive() {
-
+    this.toastPopUp(`I don't work yet. :(`, 'Five different cards')
   }
 
   checkMessage(message, title) {
