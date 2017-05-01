@@ -2,6 +2,19 @@ body {
   background-color: lightblue;
 }
 
+.ready-btn {
+  margin: 10px;
+}
+
+.start-btn {
+  margin: 10px;
+}
+
+.chat-container {
+  width: 90%;
+  margin: auto;
+}
+
 .card-container {
   display: flex;
   flex-direction: column;
@@ -9,16 +22,84 @@ body {
 
 .player-hands {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
 }
 
 .player-hand-container {
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.player-hand-container.active-player {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.player-name {
+  border: 1px solid black;
+  border-radius: 10px;
+  align-self: center;
+  padding: 5px;
+}
+
+.player-name.active {
+  background-color: royalblue;
+}
+
+.player-hand {
+  display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
 }
 
-.player-hand-container.active {
+.player-card {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.opponent-card {
+  width: 40px;
+  height: 40px;
+}
+
+.opponent-card.active {
+  background-color: royalblue;
+}
+
+.self-hand-container {
+  margin: 10px;
+}
+
+.self-hand {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.self-hand.active-player {
   border: 1px solid black;
   border-radius: 10px;
+}
+
+.self-card.active {
+  background-color: royalblue;
+}
+
+.player-turn-status {
+  text-align: center;
+}
+
+.card-btn {
+  margin: 10px;
+}
+
+.no-select {
+  text-align: center;
+  pointer-events: none;
 }
